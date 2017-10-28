@@ -23,9 +23,14 @@ class ItemController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $item = new Item([
+          'name' => $request->get('name'),
+          'price' => $request->get('price')
+        ]);
+        $item->save();
+        return response()->json('Successfully added');
     }
 
     /**
@@ -34,14 +39,9 @@ class ItemController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store()
     {
-        $item = new Item([
-          'name' => $request->get('name'),
-          'price' => $request->get('price')
-        ]);
-        $item->save();
-        return response()->json('Successfully added');
+        //
     }
 
     /**
